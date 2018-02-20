@@ -102,6 +102,14 @@
 			-webkit-text-fill-color:#404040;
 			-webkit-text-stroke: 0.05em white;
 		}
+        #cuadroAyuda
+        {
+            width: 25px;
+            height: 25px;
+            border: 1px solid black;
+            border-radius: 40%;
+            background-color: rgb(253, 253, 253);
+        }
     </style>
 </head>
 <script type="text/javascript">
@@ -218,6 +226,31 @@
         while (elemento.firstChild) {
          elemento.removeChild(elemento.firstChild);
         }
+    }
+    function ayudaover()
+    {
+        
+        
+        ayuda = document.createElement("div");
+        ayuda.style.width = "200px";
+        ayuda.style.height = "200px";
+        ayuda.style.position = "absolute";
+        ayuda.style.top = "10%";
+        ayuda.style.left = "20%";
+        ayuda.style.border = "5px solid black";
+        ayuda.style.borderRadius = "5%";
+        ayuda.style.backgroundColor = "white";
+        ayuda.style.fontSize = "20px";
+        var contenido = document.createTextNode("En esta opcion podemos elegir el pokemon referente a su posicion en la guia pokemon/pokedex");
+        ayuda.appendChild(contenido);
+        cuadroAyuda.appendChild(ayuda);
+    }
+    function ayudaout()
+    { 
+        
+	    cuadroAyuda.removeChild(ayuda);	
+        
+        
     }
     function ningunaCarta()
     {
@@ -486,7 +519,13 @@
     window.onload = function()
     {
 
-        
+        signo = document.getElementById("signo");
+        signo.style.width = "100%";
+        signo.style.height = "100%";
+        cuadroAyuda = document.getElementById("cuadroAyuda");
+        cuadroAyuda.onmouseover = ayudaover;
+        cuadroAyuda.onmouseout = ayudaout;
+
         fondo=document.getElementById("fondo");
         fondo.style.width = "97%"
         //fondo.style.height = "1000px";
@@ -860,6 +899,7 @@
                                 <option value="" selected="selected">- Numero Pokedex -</option>
                         </select> 
                     <input id="confirmar" type="button" name="confirmar" value="Borrar"/>
+                    <div id="cuadroAyuda"><img id="signo"src="signo.png"/></div>
                 </div>
                 <div id="nombre">
                     <h3 id="nombreTexto">Nombre de Pokemon</h3>
